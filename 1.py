@@ -3,6 +3,8 @@ from selenium.webdriver.common.by import By
 from selenium import *
 from selenium.webdriver.support.ui import Select
 import time
+import random
+import string
 driver = webdriver.Chrome()
 
 driver.maximize_window()  
@@ -36,4 +38,28 @@ date1.send_keys(eventDate)
 location1 = driver.find_element(By.XPATH,"//*[text()=' A Grand Hotel, Park Ave, Bridgeport, CT']")
 location1.clear()
 location1.send_keys(eventLocation)
+element = driver.find_element(By.CLASS_NAME,'mx-3')
+driver.execute_script("""
+var element = arguments[0];
+element.parentNode.removeChild(element);
+""", element)
+element = driver.find_element(By.CLASS_NAME,'mx-3')
+driver.execute_script("""
+var element = arguments[0];
+element.parentNode.removeChild(element);
+""", element)
+element = driver.find_element(By.CLASS_NAME,'mx-3')
+driver.execute_script("""
+var element = arguments[0];
+element.parentNode.removeChild(element);
+""", element)
+
+
+#def(nme):
+#    res = ''.join(random.choices(string.ascii_uppercase +
+#                             string.digits, k=N))
+# 
+#
+#    print("The generated random string : " + str(res))
+#    pasteid= nme+
 time.sleep(100)  
