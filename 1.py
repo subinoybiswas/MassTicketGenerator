@@ -10,7 +10,8 @@ driver = webdriver.Chrome()
 driver.maximize_window()  
 driver.get("https://htmljstemplates.com/utilities/qr-ticket-generator") 
 time.sleep(6)
-driver.find_element("id","qrInput").send_keys("Hello")
+qr= driver.find_element("id","qrInput")
+qr.send_keys("Hello")
 dd= Select(driver.find_element("id","qrType"))
 dd.select_by_value("event")
 
@@ -53,13 +54,23 @@ driver.execute_script("""
 var element = arguments[0];
 element.parentNode.removeChild(element);
 """, element)
+changeforname=driver.find_element(By.XPATH,"//*[text()='Admit 1']")
+changeforrandom =driver.find_element(By.XPATH,"//*[text()='1AD3434']")
+def qrid(nme):
+    res = ''.join(random.choices(string.ascii_uppercase +
+                             string.digits, k=7))
+    pasteid = nme+ res
+    print(res)
+    qr.clear()
+    qr.send_keys(pasteid)
+    time.sleep(2)
+    changeforname.clear()
+    changeforname.send_keys(nme)
+    changeforrandom.clear()
+    changeforrandom.send_keys(res)
+o = ["Subi","AB"]
+for pm in o:
+    qrid(pm)
 
 
-#def(nme):
-#    res = ''.join(random.choices(string.ascii_uppercase +
-#                             string.digits, k=N))
-# 
-#
-#    print("The generated random string : " + str(res))
-#    pasteid= nme+
 time.sleep(100)  
