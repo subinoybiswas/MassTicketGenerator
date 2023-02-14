@@ -10,7 +10,7 @@ import random
 import string
 import os
 import time
-
+import csv
 options = webdriver.ChromeOptions()
 
 prefs={"download.default_directory":"C:\\Users\\SUBINOY\\OneDrive\\Documents\\Python-LAPTOP-2SS827IP\\Automation\\Tickets"}
@@ -50,16 +50,19 @@ date1.send_keys(eventDate)
 location1 = driver.find_element(By.XPATH,"//*[text()=' A Grand Hotel, Park Ave, Bridgeport, CT']")
 location1.clear()
 location1.send_keys(eventLocation)
+
 element = driver.find_element(By.CLASS_NAME,'mx-3')
 driver.execute_script("""
 var element = arguments[0];
 element.parentNode.removeChild(element);
 """, element)
+
 element = driver.find_element(By.CLASS_NAME,'mx-3')
 driver.execute_script("""
 var element = arguments[0];
 element.parentNode.removeChild(element);
 """, element)
+
 element = driver.find_element(By.CLASS_NAME,'mx-3')
 driver.execute_script("""
 var element = arguments[0];
@@ -110,10 +113,13 @@ def qrid(nme):
         #element.click()
         #time.sleep(1)
         #tiny_file_rename(pasteid,Initial_path)
-
-o = ["Subi","AB"]
-for pm in o:
-    qrid(pm)
+with open('C:\\Users\\SUBINOY\\OneDrive\\Documents\\abcde.csv', newline='') as csvfile:
+    spamreader = csv.reader(csvfile, delimiter=',', quotechar='|')
+    for lims in spamreader:
+        qrid(lims[0])
+#o = ["Subi","AB"]
+#for pm in o:
+ #   qrid(pm)
 
 
 time.sleep(100)  
